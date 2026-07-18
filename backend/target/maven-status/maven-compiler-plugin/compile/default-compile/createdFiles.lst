@@ -33,6 +33,7 @@ com\vitallink\model\Notification.class
 com\vitallink\repository\NotificationRepository.class
 com\vitallink\dto\AuthResponse$AuthResponseBuilder.class
 com\vitallink\service\AuthService.class
+com\vitallink\controller\HealthController.class
 com\vitallink\model\Hospital$HospitalBuilder.class
 com\vitallink\repository\PaymentRepository.class
 com\vitallink\controller\NotificationController.class

@@ -103,7 +103,8 @@ const Auth = () => {
       try {
         await login({ email, password });
       } catch (err: any) {
-        setError(err.response?.data || err.message || 'Login failed. Please verify credentials.');
+        const errorMsg = err.response?.data?.message || (typeof err.response?.data === 'string' ? err.response.data : null) || err.message || 'Login failed. Please verify credentials.';
+        setError(errorMsg);
         setLoading(false);
       }
     } else {
@@ -150,7 +151,8 @@ const Auth = () => {
           longitude: coords?.lng
         });
       } catch (err: any) {
-        setError(err.response?.data || err.message || 'Registration failed. Try again.');
+        const errorMsg = err.response?.data?.message || (typeof err.response?.data === 'string' ? err.response.data : null) || err.message || 'Registration failed. Try again.';
+        setError(errorMsg);
         setLoading(false);
       }
     }
