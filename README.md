@@ -42,20 +42,26 @@ Developed and conceptualized independently as a self-project by **Shaik Asif**.
 ## 📂 System Directory Structure
 
 ```text
+├── frontend/                      # React Frontend Application
+│   ├── src/                       # React source files (components, contexts, hooks, pages)
+│   ├── public/                    # Static assets
+│   ├── package.json               # NPM package configuration
+│   └── vite.config.ts             # Vite configuration
 ├── backend/                       # Spring Boot Java Application
 │   ├── src/main/java/com/vitallink/
 │   │   ├── config/                # Security Config (CORS/JWT Filter)
 │   │   ├── controller/            # REST API endpoints (Auth, Donors, Hospitals)
 │   │   ├── model/                 # MongoDB Document Entities (User, Donor, Hospital)
 │   │   └── repository/            # Spring Data Mongo Database Interfaces
+│   ├── maven-portable/            # Maven binaries
 │   └── run-backend.ps1            # Portable Maven startup script
-├── src/                           # Frontend React Source Code
-│   ├── components/                # Reusable UI Blocks (Navigation, LocationService)
-│   ├── context/                   # Auth & Session state provider
-│   ├── pages/                     # Public routing views (Home, Donors, About, Receivers)
-│   ├── services/                  # Axios service definitions connecting to port 8081
-│   └── data/                      # Blood Group constants & baseline mock data
-├── run-backend.bat                # Root script to run backend
+├── database/                      # Local Database Configuration
+│   ├── docker-compose.yml         # Starts MongoDB in Docker container
+│   └── README.md                  # Database documentation
+├── run-all.bat                    # Root orchestrator (starts database, backend, & frontend)
+├── run-database.bat               # Starts/verifies local MongoDB
+├── run-backend.bat                # Starts the Spring Boot backend
+├── run-frontend.bat               # Starts the React frontend
 ├── vitallink_report.pdf           # Detailed system implementation PDF study report
 └── README.md                      # Project documentation
 ```
@@ -67,7 +73,7 @@ Developed and conceptualized independently as a self-project by **Shaik Asif**.
 ### Prerequisites
 - **Node.js** (v18 or higher)
 - **Java JDK** (v17 or higher)
-- **MongoDB** (Running locally on default port `27017`)
+- **MongoDB** (Running locally on default port `27017` or through Docker Compose)
 
 ---
 
@@ -77,29 +83,48 @@ git clone <git-url>
 cd vitallink
 ```
 
-### Step 2: Set Up MongoDB
-Ensure your MongoDB service is running locally on port `27017`.
-The app will automatically initialize and connect to the `vitalink` database on startup:
+### Step 2: Install Frontend Dependencies
 ```bash
-# Connect URL configured in backend:
-mongodb://localhost:27017/vitalink
+cd frontend
+npm install
+cd ..
 ```
 
-### Step 3: Run Spring Boot Backend
-To run the backend, simply run the batch script in the root directory (which handles portable Maven initialization and starts the server on port `8081`):
+---
+
+## 🚀 How to Run the App (One-Click Run)
+
+To launch the database, backend, and frontend concurrently in separate terminal windows, simply open your terminal in the root directory and run:
+
 ```bash
-# From root directory:
+.\run-all.bat
+```
+
+This will automatically:
+1. Verify if MongoDB is running locally on port `27017` (and start it via Docker Compose if it isn't running and Docker is available).
+2. Start the Spring Boot backend on `http://localhost:8081`.
+3. Start the React frontend on `http://localhost:8080`.
+
+---
+
+## 🛠️ Manual Run Commands
+
+If you prefer to start the services in separate tabs manually, execute the following from the root directory:
+
+#### Run Database
+```bash
+.\run-database.bat
+```
+
+#### Run Backend
+```bash
 .\run-backend.bat
 ```
 
-### Step 4: Run Vite Frontend
-In a new terminal window, install npm packages and start the hot-reloading development server:
+#### Run Frontend
 ```bash
-# From root directory:
-npm install
-npm run dev
+.\run-frontend.bat
 ```
-Open [http://localhost:8080](http://localhost:8080) (or the displayed Vite address) to view the portal.
 
 ---
 
