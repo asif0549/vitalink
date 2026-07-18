@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* VitaLink Blood Donation Platform Design System */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 220 26% 14%;
+
+    /* Blood Red Theme (Primary) */
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 0 100% 70%;
+    
+    /* Medical Blue Theme (Receivers) */
+    --medical-blue: 210 100% 56%;
+    --medical-blue-foreground: 0 0% 100%;
+    --medical-blue-light: 210 100% 90%;
+    
+    /* Life Green Theme (Donors) */
+    --life-green: 142 76% 36%;
+    --life-green-foreground: 0 0% 100%;
+    --life-green-light: 142 76% 90%;
+    
+    /* Hospital Professional (Grey/Maroon) */
+    --hospital-primary: 0 50% 30%;
+    --hospital-secondary: 220 13% 18%;
+    --hospital-accent: 220 14% 96%;
+    
+    /* Emergency Colors */
+    --emergency: 0 100% 50%;
+    --emergency-foreground: 0 0% 100%;
+    --urgent: 30 100% 50%;
+    --urgent-foreground: 0 0% 100%;
+
+    /* UI Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 220 26% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 26% 14%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 26% 14%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 26% 14%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 0 84% 60%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-medical: linear-gradient(135deg, hsl(var(--medical-blue)), hsl(210 100% 70%));
+    --gradient-life: linear-gradient(135deg, hsl(var(--life-green)), hsl(142 76% 50%));
+    --gradient-hospital: linear-gradient(135deg, hsl(var(--hospital-primary)), hsl(var(--hospital-secondary)));
+    --gradient-emergency: linear-gradient(135deg, hsl(var(--emergency)), hsl(var(--urgent)));
+    
+    /* Shadows */
+    --shadow-medical: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(220 13% 18% / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground;
+    @apply px-8 py-4 rounded-xl font-semibold text-lg;
+    @apply shadow-lg hover:shadow-xl transform hover:scale-105;
+    @apply transition-all duration-300 ease-out;
+    @apply border-2 border-transparent hover:border-primary-foreground/20;
+  }
+  
+  .btn-medical {
+    @apply bg-gradient-to-r from-medical-blue to-blue-400 text-medical-blue-foreground;
+    @apply px-6 py-3 rounded-lg font-medium;
+    @apply shadow-md hover:shadow-lg transform hover:scale-105;
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .btn-donor {
+    @apply bg-gradient-to-r from-life-green to-green-400 text-life-green-foreground;
+    @apply px-6 py-3 rounded-lg font-medium;
+    @apply shadow-md hover:shadow-lg transform hover:scale-105;
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .btn-hospital {
+    @apply bg-gradient-to-r from-hospital-primary to-hospital-secondary text-white;
+    @apply px-6 py-3 rounded-lg font-medium;
+    @apply shadow-md hover:shadow-lg transform hover:scale-105;
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .btn-emergency {
+    @apply bg-gradient-to-r from-emergency to-urgent text-emergency-foreground;
+    @apply px-8 py-4 rounded-full font-bold text-xl;
+    @apply shadow-xl hover:shadow-2xl transform hover:scale-110;
+    @apply transition-all duration-200 ease-out;
+    @apply animate-pulse;
+  }
+
+  /* Card Variants */
+  .card-medical {
+    @apply bg-white border border-medical-blue/20 rounded-xl p-6;
+    @apply shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply hover:border-medical-blue/40 hover:-translate-y-1;
+  }
+  
+  .card-donor {
+    @apply bg-white border border-life-green/20 rounded-xl p-6;
+    @apply shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply hover:border-life-green/40 hover:-translate-y-1;
+  }
+  
+  .card-hospital {
+    @apply bg-white border border-hospital-primary/20 rounded-xl p-6;
+    @apply shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply hover:border-hospital-primary/40 hover:-translate-y-1;
+  }
+
+  /* Badges */
+  .badge-available {
+    @apply bg-life-green/10 text-life-green px-3 py-1 rounded-full text-sm font-medium;
+    @apply border border-life-green/20;
+  }
+  
+  .badge-unavailable {
+    @apply bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium;
+    @apply border border-red-200;
+  }
+  
+  .badge-urgent {
+    @apply bg-emergency/10 text-emergency px-3 py-1 rounded-full text-sm font-bold;
+    @apply border border-emergency/20 animate-pulse;
+  }
+
+  /* Background Patterns */
+  .bg-hero-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--primary-glow) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--medical-blue) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, hsl(var(--life-green) / 0.1) 0%, transparent 50%);
+  }
+  
+  .text-gradient-hero {
+    @apply bg-gradient-to-r from-primary via-primary-glow to-medical-blue bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-medical {
+    @apply bg-gradient-to-r from-medical-blue to-blue-600 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-donor {
+    @apply bg-gradient-to-r from-life-green to-green-600 bg-clip-text text-transparent;
+  }
+
+  /* Animations for life-saving theme */
+  .heartbeat {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
+  
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .blood-drop {
+    animation: blood-drop 3s ease-in-out infinite;
+  }
+  
+  @keyframes blood-drop {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+}
